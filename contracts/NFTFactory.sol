@@ -90,7 +90,6 @@ contract NFTFactory is ProxyStorage,
      * @param _symbol symbol of the NFT to be created.
      * @param _owner Address of the contract owner.
      * @param _wston Address of the WSTON token.
-     * @param _ton Address of the TON token.
      * @param _treasury Address of the treasury contract.
      */
     function initialize(

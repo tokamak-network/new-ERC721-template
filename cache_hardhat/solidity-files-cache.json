@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/NFTFactory.sol": {
-      "lastModificationDate": 1735652453830,
-      "contentHash": "4ea5e309d213eeeac99119e06a1345b9",
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/NFTFactory.sol": {
+      "lastModificationDate": 1737143278084,
+      "contentHash": "d4b723b16e9f142fd1211a3cccff5b43",
       "sourceName": "contracts/NFTFactory.sol",
       "solcConfig": {
         "version": "0.8.25",
@@ -49,9 +49,9 @@
         "NFTFactory"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/NFTFactoryStorage.sol": {
-      "lastModificationDate": 1735652453831,
-      "contentHash": "7c83543076d66056ae4fa1263496839f",
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/NFTFactoryStorage.sol": {
+      "lastModificationDate": 1737143079373,
+      "contentHash": "89e56b498381008073577e9d6201513a",
       "sourceName": "contracts/NFTFactoryStorage.sol",
       "solcConfig": {
         "version": "0.8.25",
@@ -86,8 +86,8 @@
         "NFTFactoryStorage"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/proxy/ProxyStorage.sol": {
-      "lastModificationDate": 1735652453835,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/proxy/ProxyStorage.sol": {
+      "lastModificationDate": 1737143079375,
       "contentHash": "232ff60e7857ea64233aa8d45b2e09f9",
       "sourceName": "contracts/proxy/ProxyStorage.sol",
       "solcConfig": {
@@ -123,8 +123,8 @@
         "ProxyStorage"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol": {
-      "lastModificationDate": 1735475552989,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol": {
+      "lastModificationDate": 1737143079671,
       "contentHash": "77d30f3cd93f46b80b6f8f1ebc574ee4",
       "sourceName": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
       "solcConfig": {
@@ -163,8 +163,8 @@
         "OwnableUpgradeable"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol": {
-      "lastModificationDate": 1735475553001,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol": {
+      "lastModificationDate": 1737143079706,
       "contentHash": "f0cedd674b4863ee90d1521a92ab82df",
       "sourceName": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
       "solcConfig": {
@@ -200,8 +200,8 @@
         "Initializable"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol": {
-      "lastModificationDate": 1735475553004,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol": {
+      "lastModificationDate": 1737143079716,
       "contentHash": "7803a1585255539b7c753dce0197735d",
       "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol",
       "solcConfig": {
@@ -243,8 +243,8 @@
         "ERC721URIStorageUpgradeable"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol": {
-      "lastModificationDate": 1735475558013,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol": {
+      "lastModificationDate": 1737143079859,
       "contentHash": "190613e556d509d9e9a0ea43dc5d891d",
       "sourceName": "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
       "solcConfig": {
@@ -280,8 +280,45 @@
         "ReentrancyGuard"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
-      "lastModificationDate": 1735475558010,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol": {
+      "lastModificationDate": 1737143079852,
+      "contentHash": "729ce0904eb533489ffcc3bfe91237d4",
+      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+      "solcConfig": {
+        "version": "0.8.25",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 20
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC721Receiver"
+      ]
+    },
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
+      "lastModificationDate": 1737143079852,
       "contentHash": "1fdc621cd6747e8985e11fc76ce74511",
       "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
       "solcConfig": {
@@ -319,45 +356,8 @@
         "IERC721"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol": {
-      "lastModificationDate": 1735475558010,
-      "contentHash": "729ce0904eb533489ffcc3bfe91237d4",
-      "sourceName": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
-      "solcConfig": {
-        "version": "0.8.25",
-        "settings": {
-          "optimizer": {
-            "enabled": true,
-            "runs": 20
-          },
-          "viaIR": true,
-          "evmVersion": "paris",
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "IERC721Receiver"
-      ]
-    },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": {
-      "lastModificationDate": 1735475558010,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": {
+      "lastModificationDate": 1737143079852,
       "contentHash": "effe88dd27f56305c4513f7aa9970ec9",
       "sourceName": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
       "solcConfig": {
@@ -397,8 +397,8 @@
         "SafeERC20"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol": {
-      "lastModificationDate": 1735475553005,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol": {
+      "lastModificationDate": 1737143079717,
       "contentHash": "c28aaa25d083a9a55bd9ec9e0b785122",
       "sourceName": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
       "solcConfig": {
@@ -436,8 +436,8 @@
         "ContextUpgradeable"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/ERC721Upgradeable.sol": {
-      "lastModificationDate": 1735475553003,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/ERC721Upgradeable.sol": {
+      "lastModificationDate": 1737143079714,
       "contentHash": "12ea8cbf7f756fa5573051c724307980",
       "sourceName": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
       "solcConfig": {
@@ -483,8 +483,8 @@
         "ERC721Upgradeable"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
-      "lastModificationDate": 1735475558013,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
+      "lastModificationDate": 1737143079860,
       "contentHash": "f4cc092958a3ddec1f4ed4103bfc54dd",
       "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
       "solcConfig": {
@@ -523,8 +523,8 @@
         "Strings"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC4906.sol": {
-      "lastModificationDate": 1735475557996,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC4906.sol": {
+      "lastModificationDate": 1737143079814,
       "contentHash": "273c26c9c728a6052d1175ace81d10b4",
       "sourceName": "@openzeppelin/contracts/interfaces/IERC4906.sol",
       "solcConfig": {
@@ -563,8 +563,8 @@
         "IERC4906"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
-      "lastModificationDate": 1735475558015,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+      "lastModificationDate": 1737143079863,
       "contentHash": "bf0119eb2a570f219729ff38b6cd1df8",
       "sourceName": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
       "solcConfig": {
@@ -600,8 +600,8 @@
         "IERC165"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol": {
-      "lastModificationDate": 1735475553005,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol": {
+      "lastModificationDate": 1737143079719,
       "contentHash": "61838d7249e45e3941fc2a45d1091448",
       "sourceName": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
       "solcConfig": {
@@ -640,8 +640,8 @@
         "ERC165Upgradeable"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol": {
-      "lastModificationDate": 1735475557997,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/draft-IERC6093.sol": {
+      "lastModificationDate": 1737143079816,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
       "solcConfig": {
@@ -679,8 +679,8 @@
         "IERC721Errors"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
-      "lastModificationDate": 1735475558011,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+      "lastModificationDate": 1737143079855,
       "contentHash": "12c206f185cb951213799561fdcaa40d",
       "sourceName": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
       "solcConfig": {
@@ -718,8 +718,8 @@
         "IERC721Metadata"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Utils.sol": {
-      "lastModificationDate": 1735475558012,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Utils.sol": {
+      "lastModificationDate": 1737143079856,
       "contentHash": "f4b67273e290784d0e155f004ae52f0b",
       "sourceName": "@openzeppelin/contracts/token/ERC721/utils/ERC721Utils.sol",
       "solcConfig": {
@@ -758,8 +758,8 @@
         "ERC721Utils"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
-      "lastModificationDate": 1735475558015,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
+      "lastModificationDate": 1737143079864,
       "contentHash": "2b2665ae9bdb1af440658741a77fe213",
       "sourceName": "@openzeppelin/contracts/utils/math/Math.sol",
       "solcConfig": {
@@ -798,8 +798,8 @@
         "Math"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": {
-      "lastModificationDate": 1735475558015,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": {
+      "lastModificationDate": 1737143079864,
       "contentHash": "ae3528afb8bdb0a7dcfba5b115ee8074",
       "sourceName": "@openzeppelin/contracts/utils/math/SignedMath.sol",
       "solcConfig": {
@@ -837,8 +837,8 @@
         "SignedMath"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Panic.sol": {
-      "lastModificationDate": 1735475558013,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Panic.sol": {
+      "lastModificationDate": 1737143079859,
       "contentHash": "2133dc13536b4a6a98131e431fac59e1",
       "sourceName": "@openzeppelin/contracts/utils/Panic.sol",
       "solcConfig": {
@@ -874,8 +874,8 @@
         "Panic"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": {
-      "lastModificationDate": 1735475558015,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": {
+      "lastModificationDate": 1737143079864,
       "contentHash": "2adca1150f58fc6f3d1f0a0f22ee7cca",
       "sourceName": "@openzeppelin/contracts/utils/math/SafeCast.sol",
       "solcConfig": {
@@ -911,8 +911,8 @@
         "SafeCast"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC721.sol": {
-      "lastModificationDate": 1735475557997,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC721.sol": {
+      "lastModificationDate": 1737143079815,
       "contentHash": "d8d23fc2f55ed934d1a1b91c9afd8526",
       "sourceName": "@openzeppelin/contracts/interfaces/IERC721.sol",
       "solcConfig": {
@@ -948,8 +948,8 @@
       ],
       "artifacts": []
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": {
-      "lastModificationDate": 1735475557995,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": {
+      "lastModificationDate": 1737143079811,
       "contentHash": "f808b485ee0cdc6768ee8385ae5f9a2a",
       "sourceName": "@openzeppelin/contracts/interfaces/IERC165.sol",
       "solcConfig": {
@@ -985,8 +985,8 @@
       ],
       "artifacts": []
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
-      "lastModificationDate": 1735475558009,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1737143079848,
       "contentHash": "8f19f64d2adadf448840908bbaf431c8",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
       "solcConfig": {
@@ -1022,8 +1022,8 @@
         "IERC20"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Address.sol": {
-      "lastModificationDate": 1735475558012,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Address.sol": {
+      "lastModificationDate": 1737143079856,
       "contentHash": "553fc9ae17d9c00fd1c301b760781e26",
       "sourceName": "@openzeppelin/contracts/utils/Address.sol",
       "solcConfig": {
@@ -1061,8 +1061,8 @@
         "Address"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": {
-      "lastModificationDate": 1735475557995,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": {
+      "lastModificationDate": 1737143079810,
       "contentHash": "6b7c5ee7a59c981072a804c99ab0fac9",
       "sourceName": "@openzeppelin/contracts/interfaces/IERC1363.sol",
       "solcConfig": {
@@ -1101,8 +1101,8 @@
         "IERC1363"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Errors.sol": {
-      "lastModificationDate": 1735475558012,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Errors.sol": {
+      "lastModificationDate": 1737143079857,
       "contentHash": "6b5eac2b85500c3012977849cfd633d8",
       "sourceName": "@openzeppelin/contracts/utils/Errors.sol",
       "solcConfig": {
@@ -1138,8 +1138,8 @@
         "Errors"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": {
-      "lastModificationDate": 1735475557995,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": {
+      "lastModificationDate": 1737143079812,
       "contentHash": "79af12d64eacc7d77b9ee2ac4b4d51ee",
       "sourceName": "@openzeppelin/contracts/interfaces/IERC20.sol",
       "solcConfig": {
@@ -1175,8 +1175,8 @@
       ],
       "artifacts": []
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/Treasury.sol": {
-      "lastModificationDate": 1735655359147,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/Treasury.sol": {
+      "lastModificationDate": 1737143079373,
       "contentHash": "099c23ddebb701cfcc983144e481c9d0",
       "sourceName": "contracts/Treasury.sol",
       "solcConfig": {
@@ -1224,8 +1224,8 @@
         "Treasury"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/interfaces/INFTFactory.sol": {
-      "lastModificationDate": 1735652453833,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/interfaces/INFTFactory.sol": {
+      "lastModificationDate": 1737143079375,
       "contentHash": "fdda6ed685fcdda2055d9d2e9711cfcf",
       "sourceName": "contracts/interfaces/INFTFactory.sol",
       "solcConfig": {
@@ -1263,8 +1263,8 @@
         "INFTFactory"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/common/AuthControl.sol": {
-      "lastModificationDate": 1735652453833,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/common/AuthControl.sol": {
+      "lastModificationDate": 1737143079374,
       "contentHash": "5d8184fddf850521b9a70cd01432dd1b",
       "sourceName": "contracts/common/AuthControl.sol",
       "solcConfig": {
@@ -1304,8 +1304,8 @@
         "AuthControl"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/TreasuryStorage.sol": {
-      "lastModificationDate": 1735655389455,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/TreasuryStorage.sol": {
+      "lastModificationDate": 1737143079373,
       "contentHash": "25581966010c5332a3dcf7b26516c142",
       "sourceName": "contracts/TreasuryStorage.sol",
       "solcConfig": {
@@ -1341,8 +1341,8 @@
         "TreasuryStorage"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/common/AuthRole.sol": {
-      "lastModificationDate": 1735652453833,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/common/AuthRole.sol": {
+      "lastModificationDate": 1737143079374,
       "contentHash": "268d4b06809bfe25bdc7c77d8908e228",
       "sourceName": "contracts/common/AuthRole.sol",
       "solcConfig": {
@@ -1378,8 +1378,8 @@
         "AuthRole"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/AccessControl.sol": {
-      "lastModificationDate": 1735475557991,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/AccessControl.sol": {
+      "lastModificationDate": 1737143079799,
       "contentHash": "4c80b7fdf559a9a348e832a57d072a0b",
       "sourceName": "@openzeppelin/contracts/access/AccessControl.sol",
       "solcConfig": {
@@ -1419,8 +1419,8 @@
         "AccessControl"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": {
-      "lastModificationDate": 1735475558015,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": {
+      "lastModificationDate": 1737143079863,
       "contentHash": "7c03c1e37c3dc24eafb76dc2b8a5c3a6",
       "sourceName": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
       "solcConfig": {
@@ -1458,8 +1458,8 @@
         "ERC165"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Context.sol": {
-      "lastModificationDate": 1735475558012,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/utils/Context.sol": {
+      "lastModificationDate": 1737143079857,
       "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
       "sourceName": "@openzeppelin/contracts/utils/Context.sol",
       "solcConfig": {
@@ -1495,8 +1495,8 @@
         "Context"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": {
-      "lastModificationDate": 1735475557991,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/lib/openzeppelin-contracts-upgradeable/lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": {
+      "lastModificationDate": 1737143079799,
       "contentHash": "6f7fac9fa0df6004375e18b7ff7edf4e",
       "sourceName": "@openzeppelin/contracts/access/IAccessControl.sol",
       "solcConfig": {
@@ -1532,8 +1532,8 @@
         "IAccessControl"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/proxy/Proxy.sol": {
-      "lastModificationDate": 1735652453834,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/proxy/Proxy.sol": {
+      "lastModificationDate": 1737143079375,
       "contentHash": "b319d29dbe4b3d19ec1b75c781b4f4ba",
       "sourceName": "contracts/proxy/Proxy.sol",
       "solcConfig": {
@@ -1575,8 +1575,8 @@
         "Proxy"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/interfaces/IProxyEvent.sol": {
-      "lastModificationDate": 1735652453834,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/interfaces/IProxyEvent.sol": {
+      "lastModificationDate": 1737143079375,
       "contentHash": "4abde6e4e26890eea041177c73141382",
       "sourceName": "contracts/interfaces/IProxyEvent.sol",
       "solcConfig": {
@@ -1612,8 +1612,8 @@
         "IProxyEvent"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/interfaces/IProxyAction.sol": {
-      "lastModificationDate": 1735652453834,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/interfaces/IProxyAction.sol": {
+      "lastModificationDate": 1737143079375,
       "contentHash": "a3c5dc2568ef8c302ddc5175e67710ff",
       "sourceName": "contracts/interfaces/IProxyAction.sol",
       "solcConfig": {
@@ -1649,8 +1649,8 @@
         "IProxyAction"
       ]
     },
-    "/Users/mehdiberiane/Documents/tokamak/newERC721-template/contracts/TreasuryProxy.sol": {
-      "lastModificationDate": 1735652453832,
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/TreasuryProxy.sol": {
+      "lastModificationDate": 1737143079373,
       "contentHash": "a0708a6571fb712807a7e2a3ed843b0e",
       "sourceName": "contracts/TreasuryProxy.sol",
       "solcConfig": {
@@ -1686,6 +1686,45 @@
       ],
       "artifacts": [
         "TreasuryProxy"
+      ]
+    },
+    "/Users/mehdiberiane/Documents/tokamak/new-ERC721-template/contracts/NFTFactoryProxy.sol": {
+      "lastModificationDate": 1737143079373,
+      "contentHash": "294f8e8b4fa4a9735e4aabf404fe8e02",
+      "sourceName": "contracts/NFTFactoryProxy.sol",
+      "solcConfig": {
+        "version": "0.8.25",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 20
+          },
+          "viaIR": true,
+          "evmVersion": "paris",
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./proxy/Proxy.sol"
+      ],
+      "versionPragmas": [
+        "0.8.25"
+      ],
+      "artifacts": [
+        "NFTFactoryProxy"
       ]
     }
   }
