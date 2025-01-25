@@ -31,7 +31,7 @@ async function main() {
     "NFT Wston", // to update 
     "NFTWSTON", // to update
     owner,
-    process.env.L2_WSTON_ADDRESS,
+    process.env.OP_SEPOLIA_WSTON_ADDRESS,
     treasuryProxyAddress,
     { gasLimit: 10000000 }
   );
@@ -44,7 +44,7 @@ async function main() {
   console.log("treasury initialization...");
   // Call the Treasury initialize function
   const tx2 = await Treasury.initialize(
-    process.env.L2_WSTON_ADDRESS, // l2wston
+    process.env.OP_SEPOLIA_WSTON_ADDRESS, // l2wston
     nftFactoryProxyAddress
   );
   await tx2.wait();

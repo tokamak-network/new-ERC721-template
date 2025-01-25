@@ -2,6 +2,8 @@ const ethers = require("ethers")
 const optimism = require("@eth-optimism/sdk")
 require('dotenv').config();
 
+// npx hardhat run scripts/optimism/2.bridgeWstonToOptimism.js --network sepolia
+
 const l1PrivateKey = process.env.PRIVATE_KEY;
 const l1Provider = new ethers.providers.JsonRpcProvider(process.env.L1_RPC_URL);
 const l2Provider = new ethers.providers.JsonRpcProvider(process.env.L2_RPC_URL);

@@ -1,7 +1,7 @@
 const { ethers, run } = require("hardhat");
 require('dotenv').config();
 
-// run: "npx hardhat run scripts/arbitrum/deploySTON.js --network l2"
+// run: "npx hardhat run scripts/arbitrum/3.deploySTON.js --network l2"
 
 async function main() {
     const [deployer] = await ethers.getSigners();
@@ -20,11 +20,6 @@ async function main() {
 
     await new Promise(resolve => setTimeout(resolve, 30000)); // Wait for 30 seconds
 
-    await run("verify:verify", {
-        address: nftFactory.address,
-        constructorArguments: [],
-    });
-
     // ------------------------ NFTFACTORY PROXY ---------------------------------
 
     const NFTFactoryProxy = await ethers.getContractFactory("NFTFactoryProxy");
@@ -33,12 +28,6 @@ async function main() {
     console.log("NFTFactoryProxy deployed to:", nftFactoryProxy.address);
 
     await new Promise(resolve => setTimeout(resolve, 30000)); // Wait for 30 seconds
-
-    await run("verify:verify", {
-        address: nftFactoryProxy.address,
-        constructorArguments: [],
-        contract: "contracts/NFTFactoryProxy.sol:NFTFactoryProxy"
-    });
 
     const upgradeNFTFactoryTo = await nftFactoryProxy.upgradeTo(nftFactory.address);
     await upgradeNFTFactoryTo.wait();
@@ -53,12 +42,6 @@ async function main() {
 
     await new Promise(resolve => setTimeout(resolve, 30000)); // Wait for 30 seconds
 
-    await run("verify:verify", {
-        address: treasury.address,
-        constructorArguments: [],
-        contract: "contracts/Treasury.sol:Treasury"
-    });
-
     // ------------------------ TREASURY PROXY INSTANCE ---------------------------------
 
     const TreasuryProxy = await ethers.getContractFactory("TreasuryProxy");
@@ -67,13 +50,6 @@ async function main() {
     console.log("TreasuryProxy deployed to:", treasuryProxy.address);
 
     await new Promise(resolve => setTimeout(resolve, 30000)); // Wait for 30 seconds
-
-    await run("verify:verify", {
-        address: treasuryProxy.address,
-        constructorArguments: [],
-        contract: "contracts/TreasuryProxy.sol:TreasuryProxy"
-    });
-    console.log("TreasuryProxy verified");
 
     const upgradeTreasuryTo = await treasuryProxy.upgradeTo(treasury.address);
     await upgradeTreasuryTo.wait();
