@@ -14,7 +14,7 @@ async function main() {
     const balance = await ethers.provider.getBalance(await deployer.getAddress());
     console.log("Account balance:", ethers.formatEther(balance));
 
-    // ------------------------ L2TitanWrappedStakedTon Deployment ---------------------------------
+    // ------------------------ L2WrappedStakedTon Deployment ---------------------------------
     
     // Instantiate the L2StandardERC20
     const L2Wston = await ethers.getContractFactory("L2StandardERC20");

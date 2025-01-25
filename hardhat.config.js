@@ -1,6 +1,5 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("@nomicfoundation/hardhat-foundry");
-require('hardhat-contract-sizer');
+require("@nomiclabs/hardhat-ethers");
+require("@nomicfoundation/hardhat-verify");
 require('dotenv').config();
 
 module.exports = {
@@ -18,29 +17,30 @@ module.exports = {
     hardhat: {},
     l2: {
       url: process.env.L2_RPC_URL,
-      accounts: [process.env.PRIVATE_KEY]
-    },
-    sepolia: {
-      url: process.env.SEPOLIA_RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
-      chainId: 11155111, // Sepolia testnet chain ID
+      chainId: parseInt(process.env.L2_CHAINID, 10),
+    },
+    l1: {
+      url: process.env.L1_RPC_URL,
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 11155111,
     }
   },
   etherscan: {
     apiKey: {
-      sepolia: process.env.ETHERSCAN_API_KEY,
-      l2: "abcd",
+      l1: process.env.ETHERSCAN_API_KEY,
+      l2: process.env.L2_EXPLORER_API_URL,
       bscTestnet: "abcd",
     },
     customChains: [
       {
-        network: "l2_sepolia",
-        chainId: process.env.L2_CHAINID,
+        network: "l2",
+        chainId: parseInt(process.env.L2_CHAINID, 10),
         urls: {
-            apiURL: process.env.L2_EXPLORER_API_URL,
-            browserURL: process.env.L2_EXPLORER_URL,
+          apiURL: process.env.L2_EXPLORER_API_URL,
+          browserURL: process.env.L2_EXPLORER_URL,
         },
-    }
+      }
     ]
   }
 };
