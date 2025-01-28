@@ -18,9 +18,7 @@ async function main() {
   if (!nftFactoryAddress || !nftFactoryProxyAddress||  !treasuryAddress) {
     throw new Error("Environment variables NFT_FACTORY, NFT_FACTORY_PROXY andTREASURY must be set");
   }
-  
-  const owner = '0x5c5c36Bb1e3B266637F6830FCAe2Ee2715339Eb1';
-  
+    
   // Get contract instances
   const NFTFactory = await ethers.getContractAt("NFTFactory", nftFactoryProxyAddress);
   const Treasury = await ethers.getContractAt("Treasury", treasuryProxyAddress);
@@ -31,7 +29,7 @@ async function main() {
   const initializeTx = await NFTFactory.initialize(
     "NFT Wston", // to update 
     "NFTWSTON", // to update
-    owner,
+    deployer.address,
     process.env.ARB_SEPOLIA_WSTON_ADDRESS,
     treasuryProxyAddress,
     { gasLimit: 10000000 }

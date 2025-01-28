@@ -2,7 +2,7 @@
 const { ethers } = require("hardhat");
 require('dotenv').config();
 
-// npx hardhat run scripts/optimism/1.depositAndGetWston.js --network l1
+// npx hardhat run scripts/zkSyncEra/1.depositAndGetWston.js --network l1
 
 async function main() {
     const [deployer] = await ethers.getSigners();

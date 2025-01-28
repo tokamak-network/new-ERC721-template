@@ -2,7 +2,7 @@
 const { ethers } = require("hardhat");
 require('dotenv').config();
 
-// npx hardhat run scripts/arbitrum/1.depositAndGetWston.js --network sepolia
+// npx hardhat run scripts/arbitrum/1.depositAndGetWston.js --network l1
 
 async function main() {
     const [deployer] = await ethers.getSigners();
@@ -11,19 +11,22 @@ async function main() {
     const l1wstonProxyAddress = process.env.L1_WRAPPED_STAKED_TON_PROXY;
     const tonTokenAddress = process.env.L1_TON;
 
-    // Get contract instance
-    const Wston = await ethers.getContractAt("L1WrappedStakedTON", l1wstonProxyAddress);
-
     // TON Token Contract ABI (simplified for approve function)
     const tonTokenABI = [
         "function approve(address spender, uint256 amount) external returns (bool)"
     ];
+    
+    // WSTON Token Contract ABI (simplified for deposit function)
+    const wstonTokenABI = [
+        "function depositWTONAndGetWSTON(uint256 _amount, bool _token) external"
+    ]
 
     // Create a contract instance for the TON token
     const tonTokenContract = new ethers.Contract(tonTokenAddress, tonTokenABI, deployer);
+    const wstonTokenContract = new ethers.Contract(l1wstonProxyAddress, wstonTokenABI, deployer);
 
     // Define the amount to deposit (in TON)
-    const tonAmount = ethers.parseUnits('50000', 'ether'); 
+    const tonAmount = 5000000000000000000n; 
 
 
     try {
@@ -40,7 +43,7 @@ async function main() {
         console.log("depositing Ton for Wston...");
 
         // Call the deposit function
-        const tx1 = await Wston.depositWTONAndGetWSTON(tonAmount, true, {
+        const tx1 = await wstonTokenContract.depositWTONAndGetWSTON(tonAmount, true, {
             gasLimit: 15000000 
         }); // true indicates TON
         console.log('Transaction sent:', tx.hash);

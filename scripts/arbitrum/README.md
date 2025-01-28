@@ -1,5 +1,11 @@
 # Deploy your protocol on ARBITRUM
 
+## Get Wston
+
+run:
+```
+npx hardhat run scripts/arbitrum/1.depositAndGetWston.js --network l1
+```
 
 ## Bridge WSTON to Arbitrum
 
@@ -9,13 +15,20 @@ note: please first adjust the amount to bridge within the script (line 12)
 run:
 
 ```
-npx hardhat run scripts/arbitrum/bridgeWstonToArbitrum.js --network l1
+npx hardhat run scripts/arbitrum/2.bridgeWstonToArbitrum.js --network l1
 ```
 
 
-## deploy your STON token on Arbitrum
+## deploy your STON contracts on Arbitrum
 
 run:
 ```
-npx hardhat run scripts/arbitrum/deploySTON.js --network l2
+npx hardhat run scripts/arbitrum/3.deploySTON.js --network l2
+```
+
+## initialize your STON contracts on Arbitrum
+
+run:
+```
+npx hardhat run scripts/arbitrum/4.initialization.js --network l2
 ```

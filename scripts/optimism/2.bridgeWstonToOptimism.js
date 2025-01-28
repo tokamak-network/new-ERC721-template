@@ -2,7 +2,7 @@ const ethers = require("ethers")
 const optimism = require("@eth-optimism/sdk")
 require('dotenv').config();
 
-// npx hardhat run scripts/optimism/2.bridgeWstonToOptimism.js --network sepolia
+// npx hardhat run scripts/optimism/2.bridgeWstonToOptimism.js --network l1
 
 const l1PrivateKey = process.env.PRIVATE_KEY;
 const l1Provider = new ethers.providers.JsonRpcProvider(process.env.L1_RPC_URL);
@@ -21,7 +21,7 @@ const erc20ABI = [
 const l1ERC20 = new ethers.Contract(l1Token, erc20ABI, l1Wallet);
 const l2ERC20 = new ethers.Contract(l2Token, erc20ABI, l2Wallet);
 
-const amount = 100000000000000000000000000000n;
+const amount = 10000000000000000000000000000n;
 
 const main = async () => {
 
@@ -29,8 +29,8 @@ const main = async () => {
     console.log((await l1ERC20.balanceOf(l1Wallet.address)).toString());
 
     const messenger = new optimism.CrossChainMessenger({
-        l1ChainId: 11155111, // 11155111 for Sepolia, 1 for Ethereum
-        l2ChainId: 11155420, // 11155420 for OP Sepolia, 10 for OP Mainnet
+        l1ChainId: process.env.L1_CHAINID, // 11155111 for Sepolia, 1 for Ethereum
+        l2ChainId: process.env.L2_CHAINID, // 11155420 for OP Sepolia, 10 for OP Mainnet
         l1SignerOrProvider: l1Wallet,
         l2SignerOrProvider: l2Wallet,
     });
