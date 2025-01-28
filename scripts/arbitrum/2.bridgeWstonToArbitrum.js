@@ -3,12 +3,12 @@ const { providers, Wallet } = require('ethers');
 const { getArbitrumNetwork, Erc20Bridger } = require('@arbitrum/sdk');
 require('dotenv').config();
 
+// run: "npx hardhat run scripts/arbitrum/2.bridgeWstonToArbitrum.js --network l1"
+
 const walletPrivateKey = process.env.PRIVATE_KEY;
 const l1Provider = new ethers.providers.JsonRpcProvider(process.env.L1_RPC_URL);
 const l2Provider = new ethers.providers.JsonRpcProvider(process.env.L2_RPC_URL);
 const l1Wallet = new Wallet(walletPrivateKey, l1Provider);
-
-// npx hardhat run scripts/arbitrum/2.bridgeWstonToArbitrum.js --network sepolia
 
 const amount = 100000000000000000000000000000n;
 
