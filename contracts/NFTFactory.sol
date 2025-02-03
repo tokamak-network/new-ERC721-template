@@ -45,6 +45,7 @@ interface ITreasury {
 contract NFTFactory is ProxyStorage,
     Initializable,
     ERC721URIStorageUpgradeable,
+    IERC721Receiver,
     NFTFactoryStorage,
     OwnableUpgradeable,
     ReentrancyGuard {
@@ -78,6 +79,14 @@ contract NFTFactory is ProxyStorage,
             revert UnauthorizedCaller(msg.sender);
         }
         _;
+    }
+
+    function pause() public onlyOwner whenNotPaused {
+        paused = true;
+    }
+
+    function unpause() public onlyOwner whenPaused {
+        paused = false;
     }
 
     //---------------------------------------------------------------------------------------
@@ -126,27 +135,26 @@ contract NFTFactory is ProxyStorage,
     //---------------------------------------------------------------------------------------
 
     /**
-     * @notice Melts an NFT, converting it back to its value.
-     * @param _tokenId ID of the token to melt.
+     * @notice Burns an NFT, converting it back to its value.
+     * @param _tokenId ID of the token to burn.
      * @dev The caller receives the WSTON amount associated with the NFT.
      * @dev The ERC721 token is burned.
      * @dev The caller must be the token owner.
      */
-    function meltNFT(uint256 _tokenId) external whenNotPaused {
+    function burnNFT(uint256 _tokenId) external whenNotPaused {
         // Check if the caller's address is zero
         if (msg.sender == address(0)) {
             revert AddressZero();
         }
         // Ensure the caller is the owner of the NFT
-        if (NFTIndexToOwner[_tokenId] != msg.sender) {
+        if (ownerOf(_tokenId) != msg.sender) {
             revert NotNFTOwner();
         }
         // Get the value of the NFT
         uint256 amount = Nfts[_tokenId].value;
         // Burn the NFT and update ownership counts
         delete Nfts[_tokenId];
-        ownershipTokenCount[msg.sender]--;
-        delete NFTIndexToOwner[_tokenId];
+
         // Burn the ERC721 token
         _burn(_tokenId);
         // Transfer the WSTON amount to the caller
@@ -154,7 +162,7 @@ contract NFTFactory is ProxyStorage,
             revert TransferFailed();
         }
         // Emit an event indicating the NFT has been melted
-        emit NFTMelted(_tokenId, msg.sender);
+        emit NFTBurnt(_tokenId, msg.sender);
     }
 
     /**
@@ -170,6 +178,9 @@ contract NFTFactory is ProxyStorage,
         whenNotPaused
         returns (uint256)
     {
+        if(_owner == address(0)) {
+            revert AddressZero();
+        }
 
         // Create the new NFT and get its ID
         Nft memory newNft = Nft({
@@ -181,10 +192,6 @@ contract NFTFactory is ProxyStorage,
         Nfts.push(newNft);
         uint256 newNftId = Nfts.length - 1;
         Nfts[newNftId].tokenId = newNftId;
-
-        // update ownership variables
-        NFTIndexToOwner[newNftId] = _owner;
-        ownershipTokenCount[_owner]++;
 
         // Mint the NFT and set its token URI
         _safeMint(_owner, newNftId);
@@ -226,93 +233,31 @@ contract NFTFactory is ProxyStorage,
         return newNftIds;
     }
 
-        /**
-     * @notice Transfers an NFT token from one address to another.
-     * @dev Overrides the ERC721 transferFrom function. The transfer is only allowed when the contract is not paused.
-     *      The sender and recipient must be different.
-     * @param from The address to transfer the token from.
-     * @param to The address to transfer the token to.
-     * @param tokenId The ID of the token to transfer.
-     */
-    function transferFrom(address from, address to, uint256 tokenId)
-        public
-        override(ERC721Upgradeable, IERC721)
-        whenNotPaused
-    {
-        // Check if the sender and recipient addresses are the same
-        if (to == from) {
-            revert SameSenderAndRecipient(); // Revert if they are the same
-        }
-
-        // Perform the NFT transfer logic
-        _transferNFT(from, to, tokenId);
-
-        // Call the parent contract's transferFrom function to handle the ERC721 transfer
-        super.transferFrom(from, to, tokenId);
-
-        // Emit an event to log the transfer of the NFT
-        emit TransferNFT(from, to, tokenId);
-    }
-
-    /**
-     * @notice Safely transfers a NFT token from one address to another.
-     * @dev Overrides the ERC721 safeTransferFrom function. The transfer is only allowed when the contract is not paused.
-     *      Checks if the recipient is a contract and if it can handle ERC721 tokens.
-     * @param from The address to transfer the token from.
-     * @param to The address to transfer the token to.
-     * @param tokenId The ID of the token to transfer.
-     * @param data Additional data with no specified format, sent in call to `to`.
-     */
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data)
-        public
-        override(ERC721Upgradeable, IERC721)
-        whenNotPaused
-    {
-        // Check if the sender and recipient addresses are the same
-        if (to == from) {
-            revert SameSenderAndRecipient(); // Revert if they are the same
-        }
-
-        // Perform the NFT transfer logic
-        _transferNFT(from, to, tokenId);
-
-        // Call the parent contract's transferFrom function to handle the ERC721 transfer
-        super.transferFrom(from, to, tokenId);
-
-        // Check if the recipient is a contract and if it can handle ERC721 tokens
-        _checkOnERC721(from, to, tokenId, data);
-
-        // Emit an event to log the transfer of the NFT
-        emit TransferNFT(from, to, tokenId);
-    }
-
     /**
      * @notice Sets the token URI for a specific NFT token.
      * @param tokenId The ID of the token to set the URI for.
      * @param _tokenURI The URI to set for the token.
      */
-    function setTokenURI(uint256 tokenId, string memory _tokenURI) external {
+    function setTokenURI(uint256 tokenId, string memory _tokenURI) external onlyOwner {
         _setTokenURI(tokenId, _tokenURI);
+    }
+
+    /**
+     * @notice Handles the receipt of an ERC721 token.
+     * @return bytes4 Returns the selector of the onERC721Received function.
+     */
+    function onERC721Received(
+        address /*operator*/,
+        address /*from*/,
+        uint256 /*tokenId*/,
+        bytes calldata /*data*/
+    ) external pure override returns (bytes4) {
+        return this.onERC721Received.selector;
     }
 
     //---------------------------------------------------------------------------------------
     //--------------------------PRIVATE/INERNAL FUNCTIONS------------------------------------
     //---------------------------------------------------------------------------------------
-
-    /**
-     * @notice Transfers a NFT from one address to another.
-     * @param _from The address to transfer the NFT from.
-     * @param _to The address to transfer the NFT to.
-     * @param _tokenId The ID of the NFT to transfer.
-     */
-    function _transferNFT(address _from, address _to, uint256 _tokenId) private {
-        // Increment the ownership count for the recipient
-        ownershipTokenCount[_to]++;
-        // Update the owner of the NFT
-        NFTIndexToOwner[_tokenId] = _to;
-        // Decrement the ownership count for the sender
-        ownershipTokenCount[_from]--;
-    }
 
     /**
      * @notice Sets the token URI for an NFT.
@@ -321,10 +266,6 @@ contract NFTFactory is ProxyStorage,
      * @param _tokenURI The URI to set for the NFT.
      */
     function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal override {
-        // Ensure the sender is the owner of the NFT
-        if (msg.sender != ownerOf(tokenId)) {
-            revert NotNFTOwner();
-        }
         // Call the parent function to set the token URI
         super._setTokenURI(tokenId, _tokenURI);
     }
@@ -385,7 +326,7 @@ contract NFTFactory is ProxyStorage,
      */
     function totalSupply() public view returns (uint256) {
         // Return the total number of NFTs, excluding the zero index
-        return Nfts.length - 1;
+        return Nfts.length;
     }
 
     /**

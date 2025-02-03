@@ -47,6 +47,11 @@ contract Treasury is ProxyStorage, IERC721Receiver, ReentrancyGuard, AuthControl
         _;
     }
 
+    modifier onlyOwnerOrNFTFactory() {
+      require(isOwner() || msg.sender == nftFactory, "caller is neither owner nor NFTFactory");
+      _;
+    }
+
     function pause() public onlyOwner whenNotPaused {
         paused = true;
     }
@@ -109,7 +114,7 @@ contract Treasury is ProxyStorage, IERC721Receiver, ReentrancyGuard, AuthControl
      * @dev only the NFTFactory, MarketPlace, RandomPack, Airdrop or the Owner are authorized to transfer the funds
      * @return bool Returns true if the transfer is successful.
      */
-    function transferWSTON(address _to, uint256 _amount) external onlyOwner nonReentrant returns(bool) {
+    function transferWSTON(address _to, uint256 _amount) external onlyOwnerOrNFTFactory nonReentrant returns(bool) {
         // check _to diffrent from address(0)
         _checkNonAddress(_to);
 
@@ -136,7 +141,7 @@ contract Treasury is ProxyStorage, IERC721Receiver, ReentrancyGuard, AuthControl
         uint256 _value,
         address _owner,
         string memory _tokenURI
-    ) external onlyOwner returns (uint256) {
+    ) external onlyOwner whenNotPaused returns (uint256) {
         // safety check for WSTON solvency
         if(getWSTONBalance() < INFTFactory(nftFactory).getNFTsSupplyTotalValue() + _value) {
             revert NotEnoughWstonAvailableInTreasury();

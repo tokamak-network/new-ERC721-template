@@ -26,9 +26,6 @@ contract NFTFactoryStorage {
 
     Nft[] public Nfts;
 
-    mapping(uint256 => address) public NFTIndexToOwner;
-    mapping(address => uint256) public ownershipTokenCount;
-
     bool public paused;
 
     // contract addresses
@@ -49,7 +46,7 @@ contract NFTFactoryStorage {
     event TransferNFT(address from, address to, uint256 tokenId);
 
     // melt even
-    event NFTMelted(uint256 tokenId, address owner);
+    event NFTBurnt(uint256 tokenId, address owner);
 
     // Pause Events
     event Paused(address account);
