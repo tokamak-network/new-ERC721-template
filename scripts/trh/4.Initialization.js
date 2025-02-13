@@ -29,7 +29,7 @@ async function main() {
     "NFT Wston", // to update 
     "NFTWSTON", // to update
     deployer.address,
-    process.env.OP_SEPOLIA_WSTON_ADDRESS,
+    process.env.TRH_SEPOLIA_WSTON_ADDRESS,
     treasuryProxyAddress,
     { gasLimit: 10000000 }
   );
