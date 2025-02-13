@@ -239,7 +239,7 @@ contract NFTFactory is ProxyStorage,
      * @param _tokenURI The URI to set for the token.
      */
     function setTokenURI(uint256 tokenId, string memory _tokenURI) external onlyOwner {
-        _setTokenURI(tokenId, _tokenURI);
+        super._setTokenURI(tokenId, _tokenURI);
     }
 
     /**
@@ -255,50 +255,6 @@ contract NFTFactory is ProxyStorage,
         return this.onERC721Received.selector;
     }
 
-    //---------------------------------------------------------------------------------------
-    //--------------------------PRIVATE/INERNAL FUNCTIONS------------------------------------
-    //---------------------------------------------------------------------------------------
-
-    /**
-     * @notice Sets the token URI for an NFT.
-     * @dev Overrides the internal function to ensure only the owner can set the URI.
-     * @param tokenId The ID of the NFT.
-     * @param _tokenURI The URI to set for the NFT.
-     */
-    function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal override {
-        // Call the parent function to set the token URI
-        super._setTokenURI(tokenId, _tokenURI);
-    }
-
-    /**
-     * @notice Checks if the recipient address can handle ERC721 tokens.
-     * @dev Calls the onERC721Received function on the recipient if it is a contract.
-     * @param from The address sending the token.
-     * @param to The address receiving the token.
-     * @param tokenId The ID of the token being transferred.
-     * @param data Additional data with no specified format.
-     */
-    function _checkOnERC721(address from, address to, uint256 tokenId, bytes memory data) private {
-        // Check if the recipient is a contract
-        if (to.code.length > 0) {
-            try IERC721Receiver(to).onERC721Received(_msgSender(), from, tokenId, data) returns (bytes4 retval) {
-                // Ensure the recipient contract returns the correct value
-                if (retval != IERC721Receiver.onERC721Received.selector) {
-                    revert ERC721InvalidReceiver(to);
-                }
-            } catch (bytes memory reason) {
-                // Handle the case where the recipient contract does not implement the interface correctly
-                if (reason.length == 0) {
-                    revert ERC721InvalidReceiver(to);
-                } else {
-                    /// @solidity memory-safe-assembly
-                    assembly {
-                        revert(add(32, reason), mload(reason))
-                    }
-                }
-            }
-        }
-    }
 
     //---------------------------------------------------------------------------------------
     //-----------------------------VIEW FUNCTIONS--------------------------------------------
