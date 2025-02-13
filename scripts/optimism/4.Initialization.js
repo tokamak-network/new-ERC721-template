@@ -8,9 +8,9 @@ async function main() {
 
   
   // Fetch environment variables
-  const nftFactoryAddress = process.env.FACTORY;
+  const nftFactoryAddress = process.env.NFT_FACTORY;
 
-  const nftFactoryProxyAddress = process.env.FACTORY_PROXY;
+  const nftFactoryProxyAddress = process.env.NFT_FACTORY_PROXY;
   const treasuryAddress = process.env.TREASURY;
   const treasuryProxyAddress = process.env.TREASURY_PROXY;
   
