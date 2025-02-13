@@ -8,9 +8,9 @@ async function main() {
 
   
   // Fetch environment variables
-  const nftFactoryAddress = process.env.NFT_FACTORY;
+  const nftFactoryAddress = process.env.FACTORY;
 
-  const nftFactoryProxyAddress = process.env.NFT_FACTORY_PROXY;
+  const nftFactoryProxyAddress = process.env.FACTORY_PROXY;
   const treasuryAddress = process.env.TREASURY;
   const treasuryProxyAddress = process.env.TREASURY_PROXY;
   
@@ -29,7 +29,7 @@ async function main() {
     "NFT Wston", // to update 
     "NFTWSTON", // to update
     deployer.address,
-    process.env.OP_SEPOLIA_WSTON_ADDRESS,
+    process.env.ZKSYNC_SEPOLIA_WSTON_ADDRESS,
     treasuryProxyAddress,
     { gasLimit: 10000000 }
   );
@@ -42,7 +42,7 @@ async function main() {
   console.log("treasury initialization...");
   // Call the Treasury initialize function
   const tx2 = await Treasury.initialize(
-    process.env.OP_SEPOLIA_WSTON_ADDRESS, // l2wston
+    process.env.ZKSYNC_SEPOLIA_WSTON_ADDRESS, // l2wston
     nftFactoryProxyAddress
   );
   await tx2.wait();
