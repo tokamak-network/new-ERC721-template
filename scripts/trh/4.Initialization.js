@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
 require('dotenv').config();
 // command to run: "source .env"
-// command to run: "npx hardhat run scripts/optimism/4.Initialization.js --network l2"
+// command to run: "npx hardhat run scripts/trh/4.Initialization.js --network l2"
 
 async function main() {
   const [deployer] = await ethers.getSigners();

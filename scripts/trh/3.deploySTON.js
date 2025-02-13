@@ -1,7 +1,9 @@
 const { ethers, run } = require("hardhat");
+const fs = require("fs");
+const path = require("path");
 require('dotenv').config();
 
-// command to run: "npx hardhat run scripts/optimism/3.deploySTON.js --network l2"
+// Command to run: "npx hardhat run scripts/trh/3.deploySTON.js --network l2"
 
 async function main() {
     const [deployer] = await ethers.getSigners();
@@ -57,6 +59,21 @@ async function main() {
     const upgradeTreasuryTo = await treasuryProxy.upgradeTo(treasury.address);
     await upgradeTreasuryTo.wait();
     console.log("TreasuryProxy upgraded to Treasury");
+
+    // ------------------------ UPDATE .ENV FILE ---------------------------------
+
+    const envFilePath = path.join(__dirname, '../../.env'); // Path to the .env file
+    const envVars = `
+# Deployed Contract Addresses
+NFT_FACTORY=${nftFactory.address}
+NFT_FACTORY_PROXY=${nftFactoryProxy.address}
+TREASURY=${treasury.address}
+TREASURY_PROXY=${treasuryProxy.address}
+`;
+
+    // Append or update the .env file
+    fs.appendFileSync(envFilePath, envVars);
+    console.log("Updated .env file with contract addresses.");
 }
 
 main()
