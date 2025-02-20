@@ -1,15 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.25;
 
-import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import {IERC721Receiver} from "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import {NFTFactoryStorage} from "./NFTFactoryStorage.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721URIStorageUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "./proxy/ProxyStorage.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 interface ITreasury {
     function transferWSTON(address _to, uint256 _amount) external returns (bool);
@@ -47,8 +44,7 @@ contract NFTFactory is ProxyStorage,
     ERC721URIStorageUpgradeable,
     IERC721Receiver,
     NFTFactoryStorage,
-    OwnableUpgradeable,
-    ReentrancyGuard {
+    OwnableUpgradeable {
 
     /**
      * @notice Modifier to ensure the contract is not paused.

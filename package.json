@@ -2,6 +2,9 @@
   "dependencies": {
     "@arbitrum/sdk": "^4.0.2",
     "@eth-optimism/sdk": "^3.3.3",
+    "@maticnetwork/maticjs": "^3.9.2",
+    "@maticnetwork/maticjs-ethers": "^1.1.0",
+    "@maticnetwork/maticjs-web3": "^1.0.5",
     "@openzeppelin/contracts": "^5.0.2",
     "@openzeppelin/contracts-upgradeable": "^5.0.2",
     "axios": "^1.7.2",
