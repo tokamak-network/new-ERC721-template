@@ -1,74 +1,70 @@
-const { ZkEvmClient, use } = require('@maticnetwork/maticjs')
-const ethers = require("ethers")
+const { ethers } = require('ethers');
 
-// npx hardhat run scripts/polygon/2.bridgeWstonToPolygon.js --network l1
-// WSTON TOKEN MUST BE WHITELISTED BEFORE
+// ENSURE WSTON IS WHITELISTED IN POLYGON L2
+// CHECK https://support.polygon.technology/support/solutions/articles/82000902454-how-can-we-bridge-assets-from-an-ethereum-layer-1-contract-to-zkevm-is-there-an-approval-process-for for more info
 
 // Configuration
-const config = {
-  network: "testnet", // or "mainnet"
-  version: "cardona", // or "v1" for mainnet
-  parentProvider: process.env.L1_RPC_URL, // Ethereum RPC URL
-  childProvider: process.env.L2_RPC_URL, // Polygon RPC URL
-  parentDefaultOptions: { from: "0x5c5c36Bb1e3B266637F6830FCAe2Ee2715339Eb1" }, // Ethereum wallet address
-  childDefaultOptions: { from: "0x5c5c36Bb1e3B266637F6830FCAe2Ee2715339Eb1" }, // Polygon wallet address
-};
+const privateKey = process.env.PRIVATE_KEY; // Your Ethereum wallet private key
+const tokenContractAddress = process.env.L1_WRAPPED_STAKED_TON_PROXY; // ERC20 token contract address on Ethereum
+const zkEVMBridgeAddress = process.env.POLYGON_BRIDGE_ADDRESS; // Polygon zkEVM Bridge Contract Address
+const amount = ethers.utils.parseUnits('10', 27); // 10 WSTON 
+
+// RPC URLs
+const ethereumRpcUrl = process.env.L1_RPC_URL; // Ethereum RPC
+const polygonZkEvmRpcUrl = process.env.L2_RPC_URL; // Polygon zkEVM RPC
+
+// Debugging logs
+console.log('Token Contract Address:', tokenContractAddress);
+console.log('zkEVM Bridge Address:', zkEVMBridgeAddress);
+console.log('Amount:', amount.toString());
 
 // Wallet setup
-const privateKey = process.env.PRIVATE_KEY; // Private key of your wallet
-const parentProvider = new ethers.providers.JsonRpcProvider(config.parentProvider);
-const childProvider = new ethers.providers.JsonRpcProvider(config.childProvider);
-const wallet = new ethers.Wallet(privateKey, parentProvider);
+const provider = new ethers.providers.JsonRpcProvider(ethereumRpcUrl);
+const wallet = new ethers.Wallet(privateKey, provider);
 
-// ERC20 token details
-const amount = 10000000000000000000000000000n; // 10 WSTON
+// ABI for the ERC20 token and zkEVM Bridge
+const erc20Abi = [
+  'function approve(address spender, uint256 amount) returns (bool)',
+  'function balanceOf(address owner) view returns (uint256)',
+];
+const zkEVMBridgeAbi = [
+  'function bridgeAsset(uint32 destinationNetwork, address destinationAddress, uint256 amount, address token, bool forceUpdateGlobalExitRoot, bytes calldata permitData) external payable',
+];
 
-const zkEvmClient = new ZkEvmClient();
-zkEvmClient.init({
-    network: config.network, 
-    version: config.version, 
-    parent: {
-        provider: parentProvider,
-        defaultConfig: {
-        from: config.parentDefaultOptions
-        }
-    },
-    child: {
-        provider: childProvider,
-        defaultConfig: {
-        from: config.childDefaultOptions
-        }
-    }
-});
-const erc20Token = zkEvmClient.erc20(process.env.L1_WRAPPED_STAKED_TON_PROXY, true);
-console.log("zkEvmClient initialized:", zkEvmClient);
-console.log("ERC20 token object:", erc20Token);
-
-
-async function bridgeERC20() {
+async function bridgeToken() {
   try {
-    console.log("Starting ERC20 token bridge...");
+    // Initialize contracts
+    const erc20Token = new ethers.Contract(tokenContractAddress, erc20Abi, wallet);
+    const zkEVMBridge = new ethers.Contract(zkEVMBridgeAddress, zkEVMBridgeAbi, wallet);
 
-    // approve 1000 amount
-    const result1 = await erc20Token.approve(amount);
+    // Step 1: Approve the zkEVM Bridge to spend tokens
+    const approveTx = await erc20Token.approve(zkEVMBridgeAddress, amount);
+    await approveTx.wait();
+    console.log('Approval transaction hash:', approveTx.hash);
 
-    const txHash1 = await result1.getTransactionHash();
-    const receipt1 = await result1.getReceipt();
-    console.log("ERC20 token approved for deposit:", txHash1);
+    // Step 2: Bridge the tokens to Polygon zkEVM
+    const destinationNetwork = 22; // Polygon zkEVM network ID
+    const destinationAddress = wallet.address; // Address to receive tokens on Polygon zkEVM
+    const forceUpdateGlobalExitRoot = true; // Set to true if you want to force update the global exit root
+    const permitData = '0x'; // Empty permit data (not used in this case)
 
-    // Deposit ERC20 token to Polygon
-    //deposit to user address
-    const result2 = await erc20Token.deposit(amount, wallet.address);
+    const bridgeTx = await zkEVMBridge.bridgeAsset(
+      destinationNetwork,
+      destinationAddress,
+      amount,
+      tokenContractAddress,
+      forceUpdateGlobalExitRoot,
+      permitData,
+      { gasLimit: 500000 } // Adjust gas limit as needed
+    );
 
-    const txHash2 = await result2.getTransactionHash();
-    const receipt2 = await result2.getReceipt();
-    console.log("ERC20 token deposited to Polygon:", receipt2);
+    await bridgeTx.wait();
+    console.log('Bridge transaction hash:', bridgeTx.hash);
 
-    console.log("Bridge process completed successfully!");
+    console.log('Token bridged successfully to Polygon zkEVM!');
   } catch (error) {
-    console.error("Error during bridging:", error);
+    console.error('Error bridging token:', error);
   }
 }
 
-// Run the script
-bridgeERC20();
+bridgeToken();
